@@ -7,29 +7,25 @@ var TestUtils = require('react-addons-test-utils');
 var Controls = require('Controls');
 
 describe('Controls', () => {
-  it('Should exist', () => {
+  it('should exist', () => {
     expect(Controls).toExist();
   });
 
   describe('render', () => {
     it('should render pause when started', () => {
-      var controls = TestUtils.renderIntoDocument(<Controls countDownStatus="started"/>);
+      var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="started"/>);
       var $el = $(ReactDOM.findDOMNode(controls));
-
       var $pauseButton = $el.find('button:contains(Pause)');
 
-      expect($pauseButton.length).toBe(1); //length is how many jQuery found, should be one pause button
-
+      expect($pauseButton.length).toBe(1);
     });
 
     it('should render start when paused', () => {
-      var controls = TestUtils.renderIntoDocument(<Controls countDownStatus="paused"/>);
+      var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="paused"/>);
       var $el = $(ReactDOM.findDOMNode(controls));
+      var $pauseButton = $el.find('button:contains(Start)');
 
-      var $startButton = $el.find('button:contains(Start)');
-
-      expect($startButton.length).toBe(1); //length is how many jQuery found, should be one pause button
-
+      expect($pauseButton.length).toBe(1);
     });
   });
 });
